@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+<table class="table table-dark table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Sensei Name</th>
+            <th>Username</th>
+            <th><div>Actions
+                <a href="/add_sensei"class="btn btn-secondary m-1"> Add Sensei </a>
+                <a href="/"class="btn btn-secondary m-1"> View Ninjas </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sensei in results%}
+        <tr>
+            <td>{{sensei.name}}</td>
+            <td>{{sensei.user_name}}</td>
+            <td>
+                <a href="/edit_sensei/{{sensei.id}}"class="btn btn-secondary m-1"> Edit sensei </a>
+                <a href="/delete_sensei/{{sensei.id}}" class="btn btn-danger m-1"> Delete sensei </button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

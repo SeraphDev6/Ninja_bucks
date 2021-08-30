@@ -1,0 +1,22 @@
+*{
+    margin:0;
+    padding:0;
+}
+thead,th{
+    height:10vh;
+    position: sticky;
+    top: 0px;
+    background-color: #343a40;
+}
+.logout{
+    position: sticky;
+    top: 0px;
+}
+tbody{
+    overflow-y: auto !important;
+    height: 600px !important;
+}
+body{
+    background-color: #0275d8 ;
+    background-image: url(../img/diagmonds.png);
+}

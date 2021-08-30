@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card bg-dark d-flex flex-column align-items-center justify-content-around my-4">
+    <h1 class="text-center text-danger">Delete Ninja {{ninja.name}}??</h1>
+    <form action="/confirm_delete" method="POST">
+        <input type="hidden" name="id" id="id" value="{{ninja.id}}">
+        <input type="submit" value="Delete Ninja!" class="btn btn-danger">
+        <a href="/" class="btn btn-secondary m-1">Nope</a>
+    </form>
+</div>
+{% endblock %}

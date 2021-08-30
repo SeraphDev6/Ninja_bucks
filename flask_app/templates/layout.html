@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Ninja Buck Bank</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                    <img src="{{url_for('static', filename='img/Logo.png')}}" alt="Logo" class="img-fluid">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% block body %}
+                {% endblock %}
+            </div>
+            <div class="col-md-2">
+                {% if 'id' in session %}
+                <a href="/logout" class="btn btn-secondary">Logout</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

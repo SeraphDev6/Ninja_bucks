@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card bg-dark d-flex flex-column align-items-center justify-content-around my-4">
+    <h1 class="text-center text-primary">Add Ninja</h1>
+    <form action="/new_ninja" method="POST">
+        <label for="name" class="text-white">Name</label>
+        <input type="text" name="name" id="name" class="form-control" required>
+        <label for="user_name" class="text-white">User Name</label>
+        <input type="text" name="user_name" id="user_name" class="form-control" required>
+        <input type="submit" value="Add Ninja" class="btn btn-secondary p-1">
+    </form>
+    <a href="/" class="btn btn-secondary m-1">Home</a>
+</div>
+{% endblock %}

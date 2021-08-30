@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+<table class="table table-dark table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Ninja Name</th>
+            <th>Username</th>
+            <th>Ninja Bucks</th>
+            <th><div>Actions
+                {% if session['authority'] >=2 %}
+                <a href="/add_ninja"class="btn btn-secondary m-1"> Add Ninja </a>
+                {% if session['authority'] >=3 %}
+                <a href="/add_sensei"class="btn btn-secondary m-1"> Add Sensei </a>
+                <a href="/senseis"class="btn btn-secondary m-1"> View all Senseis </a>
+                {% endif%}
+                {% endif%}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ninja in results%}
+        <tr>
+            <td>{{ninja.name}}</td>
+            <td>{{ninja.user_name}}</td>
+            <td>{{ninja.ninja_bucks}}</td>
+            <td>
+                <a href="/ninja/{{ninja.id}}"class="btn btn-secondary m-1"> View </a>
+                {% if session['authority'] >=1 %}
+                <a href="/earn/{{ninja.id}}"class="btn btn-secondary m-1"> Add Ninja Bucks </a>
+                <a href="/redeem/{{ninja.id}}"class="btn btn-secondary m-1"> Redeem Ninja Bucks </a>
+                {% if session['authority'] >=2 %}
+                <a href="/edit/{{ninja.id}}"class="btn btn-secondary m-1"> Edit Ninja </a>
+                {% if session['authority'] >=3 %}
+                <a href="/delete/{{ninja.id}}" class="btn btn-danger m-1"> Delete Ninja </button></a>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card bg-dark d-flex flex-column align-items-center justify-content-around my-4">
+    <h1 class="text-center text-danger">Delete Sensei {{sensei.name}}??</h1>
+    <form action="/confirm_delete_sensei" method="POST">
+        <input type="hidden" name="id" id="id" value="{{sensei.id}}">
+        <input type="submit" value="Delete Sensei!" class="btn btn-danger">
+        <a href="/" class="btn btn-secondary m-1">Nope</a>
+    </form>
+</div>
+{% endblock %}

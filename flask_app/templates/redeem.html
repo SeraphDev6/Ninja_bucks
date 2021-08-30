@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="card bg-dark d-flex flex-column align-items-center justify-content-around my-4">
+    <h1 class="text-center text-primary">Redeem Ninja Bucks for {{ninja.name}}</h1>
+    <form action="/redeem_bucks" method="POST">
+        <input type="hidden" name="ninja_id" id="ninja_id" value="{{ninja.id}}">
+        <input type="hidden" name="sensei_id" id="sensei_id" value="{{session['id']}}">
+        <label for="ninja_buck_change" class="text-white">Ninja Bucks to Redeem</label>
+        <input type="number" name="ninja_buck_change" id="ninja_buck_change" min="2" max="100" step="1" required>
+        <label for="message_text" class="text-white">Message</label>
+        <input type="text" name="message_text" id="message_text" required>
+        <input type="submit" value="Redeem Ninja Bucks">
+    </form>
+    {% with messages = get_flashed_messages()%}
+    {% if messages%}
+    {% for message in messages %}
+    <p class="text-danger">{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <a href="/" class="btn btn-secondary m-1">Home</a>
+</div>
+{% endblock %}
