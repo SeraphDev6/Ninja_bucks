@@ -6,6 +6,10 @@ from flask_app.models.message import Message
 
 @app.route('/')
 def index():
+    if not Sensei.any_senseis():
+        session['id']=0
+        session['authority']=5
+        return redirect('/add_sensei')
     if not 'id' in session:
         return redirect('/login')
     elif not 'authority' in session:

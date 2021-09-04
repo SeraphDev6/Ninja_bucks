@@ -52,7 +52,10 @@ def sensei_form():
 def new_sensei():
     if not Sensei.validate_reg(request.form):
         return redirect('/add_sensei')
-    Sensei.save(request.form)
+    sensei =Sensei.save(request.form)
+    if session['authority']>=5:
+        session['id']=sensei
+        session['authority']=int(request.form['authority'])
     return redirect('/senseis')
 
 @app.route('/senseis/')

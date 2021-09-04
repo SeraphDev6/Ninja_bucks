@@ -70,3 +70,8 @@ class Sensei:
         if 'id' in data:
             new_data['id']=data['id']
         return new_data
+    @staticmethod
+    def any_senseis():
+        query = "SELECT * FROM senseis"
+        results = connectToMySQL('Ninja_bucks').query_db(query)
+        return len(results)>0
