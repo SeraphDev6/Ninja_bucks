@@ -18,7 +18,7 @@ class Ninja:
         query = "UPDATE ninjas SET ninja_bucks=%(ninja_bucks)s, updated_at=NOW() WHERE id=%(id)s;"
         return connectToMySQL('Ninja_bucks').query_db(query,data)
     def can_afford(self,amount):
-        if self.ninja_bucks + int(amount) > 0:
+        if self.ninja_bucks + int(amount) >= 0:
             return True
         flash(f"{self.name} doesn't have enough Ninja Bucks!")
         return False
