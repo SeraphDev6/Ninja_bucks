@@ -55,3 +55,11 @@ class Ninja:
             flash("User Name not found. Please see a Sensei for assistance.")
             return False
         return results[0]['id']
+    @classmethod
+    def valid_ninja(cls,data):
+        query = "SELECT * FROM ninjas WHERE user_name = %(user_name)s"
+        results = connectToMySQL("Ninja_bucks").query_db(query,data)
+        if len(results)>0:
+            flash("Ninjas need a unique User Name")
+            return False
+        return True

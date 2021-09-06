@@ -58,6 +58,11 @@ class Sensei:
         if data['password'] != data['confirm-password']:
             flash("Passwords do not match")
             return False
+        query = "SELECT * FROM senseis WHERE user_name = %(user_name)s"
+        results = connectToMySQL("Ninja_bucks").query_db(query,data)
+        if len(results)>0:
+            flash("Senseis need a unique User Name")
+            return False
         return True
     @staticmethod
     def hash_password(data):

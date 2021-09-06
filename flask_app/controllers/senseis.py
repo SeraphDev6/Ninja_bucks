@@ -37,6 +37,8 @@ def add_ninja():
 
 @app.route('/new_ninja', methods=['POST'])
 def new_ninja():
+    if not Ninja.valid_ninja(request.form):
+        return redirect('/add_ninja')
     Ninja.save(request.form)
     return redirect('/')
 
